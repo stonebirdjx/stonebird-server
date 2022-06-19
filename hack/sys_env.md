@@ -24,6 +24,13 @@ docker run -d \
 mysql:latest
 ```
 
+## 设置环境变量
+```bash
+	export STB_MYSQL_HOST=ip
+	export STB_MYSQL_PORT=port
+	export STB_MYSQL_USER=user
+	export STB_MYSQL_PASSWD=passwd
+```
 
 ## DDL
 ### 创建数据库

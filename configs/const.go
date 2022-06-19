@@ -37,5 +37,5 @@ func MysqlDsn() string {
 		os.Getenv(mysqlPasswd),
 		os.Getenv(mysqlHost),
 		os.Getenv(mysqlPort),
-		os.Getenv(mysqlName))
+		mysqlName)
 }
