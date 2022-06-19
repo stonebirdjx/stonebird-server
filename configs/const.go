@@ -8,7 +8,10 @@
 
 package configs
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
 // system info
 const (
@@ -20,15 +23,19 @@ const (
 // database info
 const (
 	MysqlDriver = "mysql"
-	mysqlHost   = "106.13.178.91"
-	mysqlPort   = "3306"
-	mysqlUser   = "root"
-	mysqlPasswd = "123456"
+	mysqlHost   = "STB_MYSQL_HOST"
+	mysqlPort   = "STB_MYSQL_PORT"
+	mysqlUser   = "STB_MYSQL_USER"
+	mysqlPasswd = "STB_MYSQL_PASSWD"
 	mysqlName   = "stonebird"
 )
 
 // MysqlDsn dbUser:dbPasswd@tcp(dbHost:dbPort)/dbName.
-// 用户名:密码啊@tcp(ip:端口)/数据库的名字
 func MysqlDsn() string {
-	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s", mysqlUser, mysqlPasswd, mysqlHost, mysqlPort, mysqlName)
+	return fmt.Sprintf("%s:%s@tcp(%s:%s)/%s",
+		os.Getenv(mysqlUser),
+		os.Getenv(mysqlPasswd),
+		os.Getenv(mysqlHost),
+		os.Getenv(mysqlPort),
+		os.Getenv(mysqlName))
 }
